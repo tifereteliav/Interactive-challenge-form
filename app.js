@@ -158,23 +158,18 @@ document.addEventListener('DOMContentLoaded', () => {
         input.addEventListener('input', validateDetails);
     });
 
-    // Auto-advance on radio select
+    // Handle radio select (Enable the next button on choice, but do not auto-advance)
     form.querySelectorAll('input[type="radio"]').forEach(radio => {
-        radio.addEventListener('change', () => {
+        radio.addEventListener('change', (e) => {
             updateProgress();
             
-            // Only auto-advance if we are on a question card (indices 2 to 5)
-            if (currentCardIndex >= 2 && currentCardIndex <= 5) {
-                // Wait a moment so the user sees the option select animation
-                setTimeout(() => {
-                    if (currentCardIndex < 5) {
-                        showCard(currentCardIndex + 1, 'forward');
-                    } else {
-                        // All answered, show summary card
-                        buildSummary();
-                        showCard(6, 'forward'); // Go to card-submit
-                    }
-                }, 400);
+            // Find parent card and enable its next button
+            const parentCard = e.target.closest('.wizard-card');
+            if (parentCard) {
+                const nextBtn = parentCard.querySelector('.btn-next');
+                if (nextBtn) {
+                    nextBtn.removeAttribute('disabled');
+                }
             }
         });
     });
@@ -203,6 +198,21 @@ document.addEventListener('DOMContentLoaded', () => {
 
     btnNextDetails.addEventListener('click', () => {
         showCard(2, 'forward'); // Go to Q1 card
+    });
+
+    // Handle next buttons for questions cards (Q1-Q4)
+    const btnNextList = document.querySelectorAll('.btn-next');
+    btnNextList.forEach(btn => {
+        btn.addEventListener('click', () => {
+            if (currentCardIndex >= 2 && currentCardIndex <= 5) {
+                if (currentCardIndex < 5) {
+                    showCard(currentCardIndex + 1, 'forward');
+                } else {
+                    buildSummary();
+                    showCard(6, 'forward'); // Go to card-submit
+                }
+            }
+        });
     });
 
     btnPrevList.forEach(btn => {
@@ -259,6 +269,11 @@ document.addEventListener('DOMContentLoaded', () => {
     btnReset.addEventListener('click', () => {
         form.reset();
         validateDetails(); // Disable next button again
+        
+        // Disable all .btn-next buttons
+        const btnNextList = document.querySelectorAll('.btn-next');
+        btnNextList.forEach(btn => btn.setAttribute('disabled', 'true'));
+        
         updateProgress();
         stopConfetti();
         showCard(0, 'backward'); // Go to welcome card
