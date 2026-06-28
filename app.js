@@ -7,6 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const form = document.getElementById('google-form');
     const cards = [
         document.getElementById('card-welcome'),
+        document.getElementById('card-details'),
         document.getElementById('card-q1'),
         document.getElementById('card-q2'),
         document.getElementById('card-q3'),
@@ -21,12 +22,21 @@ document.addEventListener('DOMContentLoaded', () => {
     const btnSubmit = document.getElementById('btn-submit');
     const btnReset = document.getElementById('btn-reset');
     
+    // User Details Inputs & Button
+    const inputName = document.getElementById('input-name');
+    const inputWorkplace = document.getElementById('input-workplace');
+    const inputPhone = document.getElementById('input-phone');
+    const btnNextDetails = document.getElementById('btn-next-details');
+    
     // Progress Ring Elements
     const progressRing = document.getElementById('progress-ring');
     const progressPercentage = document.getElementById('progress-percentage');
     const progressText = document.getElementById('progress-text');
     
     // Summary Value Elements
+    const summaryValName = document.getElementById('summary-val-name');
+    const summaryValWorkplace = document.getElementById('summary-val-workplace');
+    const summaryValPhone = document.getElementById('summary-val-phone');
     const summaryValQ1 = document.getElementById('summary-val-q1');
     const summaryValQ2 = document.getElementById('summary-val-q2');
     const summaryValQ3 = document.getElementById('summary-val-q3');
@@ -96,9 +106,9 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         
         if (progressText) {
-            if (percent === 0) progressText.textContent = 'התחלת האתגר';
+            if (percent === 0) progressText.textContent = 'הזנת פרטים';
             else if (percent === 100) progressText.textContent = 'הושלם!';
-            else progressText.textContent = 'התקדמות';
+            else progressText.textContent = 'הזנת קודים';
         }
     }
 
@@ -130,21 +140,39 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 500);
     }
 
+    // Input Validation Logic for details card
+    function validateDetails() {
+        const isNameValid = inputName.value.trim().length > 1;
+        const isWorkplaceValid = inputWorkplace.value.trim().length > 1;
+        // Phone must be exactly 10 digits starting with 05
+        const isPhoneValid = /^05\d{8}$/.test(inputPhone.value.trim());
+        
+        if (isNameValid && isWorkplaceValid && isPhoneValid) {
+            btnNextDetails.removeAttribute('disabled');
+        } else {
+            btnNextDetails.setAttribute('disabled', 'true');
+        }
+    }
+
+    [inputName, inputWorkplace, inputPhone].forEach(input => {
+        input.addEventListener('input', validateDetails);
+    });
+
     // Auto-advance on radio select
     form.querySelectorAll('input[type="radio"]').forEach(radio => {
         radio.addEventListener('change', () => {
             updateProgress();
             
-            // Only auto-advance if we are on a question card (indices 1 to 4)
-            if (currentCardIndex >= 1 && currentCardIndex <= 4) {
+            // Only auto-advance if we are on a question card (indices 2 to 5)
+            if (currentCardIndex >= 2 && currentCardIndex <= 5) {
                 // Wait a moment so the user sees the option select animation
                 setTimeout(() => {
-                    if (currentCardIndex < 4) {
+                    if (currentCardIndex < 5) {
                         showCard(currentCardIndex + 1, 'forward');
                     } else {
                         // All answered, show summary card
                         buildSummary();
-                        showCard(5, 'forward'); // Go to card-submit
+                        showCard(6, 'forward'); // Go to card-submit
                     }
                 }, 400);
             }
@@ -162,20 +190,28 @@ document.addEventListener('DOMContentLoaded', () => {
         if (summaryValQ2) summaryValQ2.textContent = q2Val;
         if (summaryValQ3) summaryValQ3.textContent = q3Val;
         if (summaryValQ4) summaryValQ4.textContent = q4Val;
+
+        if (summaryValName) summaryValName.textContent = inputName.value.trim() || '-';
+        if (summaryValWorkplace) summaryValWorkplace.textContent = inputWorkplace.value.trim() || '-';
+        if (summaryValPhone) summaryValPhone.textContent = inputPhone.value.trim() || '-';
     }
 
     // Button event listeners
     btnStart.addEventListener('click', () => {
-        showCard(1, 'forward');
+        showCard(1, 'forward'); // Go to details card
+    });
+
+    btnNextDetails.addEventListener('click', () => {
+        showCard(2, 'forward'); // Go to Q1 card
     });
 
     btnPrevList.forEach(btn => {
         btn.addEventListener('click', () => {
             // Determine previous index
             let prevIndex = currentCardIndex - 1;
-            if (currentCardIndex === 5) {
+            if (currentCardIndex === 6) {
                 // If on submit summary card, go back to question 4
-                prevIndex = 4;
+                prevIndex = 5;
             }
             if (prevIndex >= 0) {
                 showCard(prevIndex, 'backward');
@@ -186,7 +222,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Form Submission Handling
     form.addEventListener('submit', (e) => {
         // Form submits to iframe in background, we handle UI transition here
-        showCard(6, 'forward'); // Go to card-loading
+        showCard(7, 'forward'); // Go to card-loading
         
         // Start simulated loading progress bar
         let progress = 0;
@@ -194,9 +230,9 @@ document.addEventListener('DOMContentLoaded', () => {
         
         const loadingTexts = [
             'יוצר חיבור מאובטח...',
-            'משדר תשובות לכנס...',
-            'רושם את הצבעתך במערכת...',
-            'מתקף נתונים...'
+            'משדר פרטים והצבעות...',
+            'רושם אותך למערכת ההגרלה...',
+            'מתקף נתונים סופיים...'
         ];
         
         const interval = setInterval(() => {
@@ -212,7 +248,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (progress >= 100) {
                 clearInterval(interval);
                 setTimeout(() => {
-                    showCard(7, 'forward'); // Go to card-success
+                    showCard(8, 'forward'); // Go to card-success
                     triggerConfetti();
                 }, 300);
             }
@@ -222,6 +258,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Reset button
     btnReset.addEventListener('click', () => {
         form.reset();
+        validateDetails(); // Disable next button again
         updateProgress();
         stopConfetti();
         showCard(0, 'backward'); // Go to welcome card

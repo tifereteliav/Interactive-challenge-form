@@ -477,6 +477,73 @@ body {
     box-shadow: var(--glow-cyan-strong);
 }
 
+/* User Details Form Inputs */
+.inputs-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.input-label {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--color-text-secondary);
+    text-align: right;
+}
+
+.input-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.input-icon {
+    position: absolute;
+    right: 14px;
+    font-size: 1.1rem;
+    pointer-events: none;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.input-wrapper input {
+    width: 100%;
+    background: rgba(3, 8, 18, 0.55);
+    border: 1px solid var(--border-glass);
+    border-radius: 12px;
+    padding: 0.9rem 2.6rem 0.9rem 1rem;
+    color: var(--color-text-primary);
+    font-family: var(--font-hebrew);
+    font-size: 1rem;
+    transition: var(--transition-smooth);
+}
+
+.input-wrapper input:focus {
+    outline: none;
+    border-color: var(--color-cyan);
+    box-shadow: 0 0 15px rgba(0, 242, 254, 0.25), var(--glow-cyan);
+    background: rgba(0, 242, 254, 0.03);
+}
+
+.input-wrapper input::placeholder {
+    color: var(--color-text-muted);
+    font-size: 0.9rem;
+}
+
+.summary-highlight {
+    color: var(--color-gold) !important;
+    text-shadow: var(--glow-gold) !important;
+}
+
 /* Options Container & Cards */
 .options-container {
     display: flex;

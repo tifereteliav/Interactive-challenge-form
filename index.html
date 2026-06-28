@@ -98,15 +98,15 @@
                 <!-- Welcome Card -->
                 <div class="wizard-card active" id="card-welcome">
                     <div class="card-content">
-                        <h2 class="card-title">מוכנים לאתגר?</h2>
-                        <p class="card-desc">לפניכם 4 אתגרים קצרים ואינטראקטיביים המבוססים על נושאי הכנס. ענו על כל השאלות, השלימו את האתגר ושדרו את התשובות היישר למערכת הכנס!</p>
+                        <h2 class="card-title">הגרלת האתגר הגדול! 🎁</h2>
+                        <p class="card-desc">תודה שהשתתפתם באתגר הכנס הגדול של כנס סוכרת והשמנה ירושלים 2026.<br><br>על מנת להשתתף בהגרלה הגדולה של הכנס, אנא הזינו את פרטיכם ואת הקודים שפתרתם באתגרים השונים.</p>
                         <div class="welcome-decor">
                             <div class="welcome-line"></div>
                             <div class="welcome-dot"></div>
                             <div class="welcome-line"></div>
                         </div>
                         <button type="button" class="btn btn-primary btn-start" id="btn-start">
-                            <span>להתחלת האתגר</span>
+                            <span>להזנת הפרטים</span>
                             <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
                                 <line x1="5" y1="12" x2="19" y2="12" />
                                 <polyline points="12 5 19 12 12 19" />
@@ -115,11 +115,48 @@
                     </div>
                 </div>
 
+                <!-- User Details Card -->
+                <div class="wizard-card" id="card-details">
+                    <div class="card-header">
+                        <span class="step-counter">שלב 1: פרטים אישיים</span>
+                        <h2 class="question-title">נא למלא את פרטי הקשר שלך להגרלה:</h2>
+                    </div>
+                    <div class="inputs-container">
+                        <div class="input-group">
+                            <label for="input-name" class="input-label">שם פרטי ושם משפחה *</label>
+                            <div class="input-wrapper">
+                                <span class="input-icon">👤</span>
+                                <input type="text" id="input-name" name="entry.1469759841" required placeholder="הזן שם מלא...">
+                            </div>
+                        </div>
+                        <div class="input-group">
+                            <label for="input-workplace" class="input-label">מקום עבודה *</label>
+                            <div class="input-wrapper">
+                                <span class="input-icon">🏢</span>
+                                <input type="text" id="input-workplace" name="entry.453116986" required placeholder="הזן מקום עבודה (קופת חולים, בי''ח, מרפאה)...">
+                            </div>
+                        </div>
+                        <div class="input-group">
+                            <label for="input-phone" class="input-label">מספר פלאפון *</label>
+                            <div class="input-wrapper">
+                                <span class="input-icon">📱</span>
+                                <input type="tel" id="input-phone" name="entry.1632221116" required placeholder="הזן מספר נייד (למשל: 0501234567)..." pattern="05[0-9]{8}" title="אנא הזן מספר נייד תקין בן 10 ספרות המתחיל ב-05">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <button type="button" class="btn btn-secondary btn-prev" disabled>חזור</button>
+                        <button type="button" class="btn btn-primary" id="btn-next-details" disabled>
+                            <span>להזנת הקודים 🔑</span>
+                        </button>
+                    </div>
+                </div>
+
                 <!-- Question 1 Card -->
                 <div class="wizard-card" id="card-q1">
                     <div class="card-header">
                         <span class="step-counter">אתגר 1 מתוך 4</span>
-                        <h2 class="question-title">אתגר הראשון: אינסולין ו-GLP1</h2>
+                        <h2 class="question-title">בחרו את הקוד שיצא לכם באתגר הראשון (אינסולין ו-GLP1):</h2>
                     </div>
                     <div class="options-container">
                         <label class="option-card">
@@ -138,7 +175,7 @@
                         </label>
                     </div>
                     <div class="card-footer">
-                        <button type="button" class="btn btn-secondary btn-prev" disabled>חזור</button>
+                        <button type="button" class="btn btn-secondary btn-prev">חזור</button>
                     </div>
                 </div>
 
@@ -146,7 +183,7 @@
                 <div class="wizard-card" id="card-q2">
                     <div class="card-header">
                         <span class="step-counter">אתגר 2 מתוך 4</span>
-                        <h2 class="question-title">אתגר שני: משימת הצלת כף הרגל Hyperbaric Rescue</h2>
+                        <h2 class="question-title">בחרו את הקוד שיצא לכם באתגר השני (הצלת כף הרגל Hyperbaric Rescue):</h2>
                     </div>
                     <div class="options-container">
                         <label class="option-card">
@@ -173,7 +210,7 @@
                 <div class="wizard-card" id="card-q3">
                     <div class="card-header">
                         <span class="step-counter">אתגר 3 מתוך 4</span>
-                        <h2 class="question-title">אתגר שלישי: מגן השריר ו-GLP1</h2>
+                        <h2 class="question-title">בחרו את הקוד שיצא לכם באתגר השלישי (מגן השריר ו-GLP1):</h2>
                     </div>
                     <div class="options-container">
                         <label class="option-card">
@@ -200,7 +237,7 @@
                 <div class="wizard-card" id="card-q4">
                     <div class="card-header">
                         <span class="step-counter">אתגר 4 מתוך 4</span>
-                        <h2 class="question-title">אתגר רביעי: אתגרים בטיפול בסוכרת בגיל השלישי</h2>
+                        <h2 class="question-title">בחרו את הקוד שיצא לכם באתגר הרביעי (סוכרת בגיל השלישי):</h2>
                     </div>
                     <div class="options-container">
                         <label class="option-card">
@@ -226,31 +263,43 @@
                 <!-- Submit Review Card -->
                 <div class="wizard-card" id="card-submit">
                     <div class="card-content">
-                        <h2 class="card-title">סיכום התשובות שלך</h2>
-                        <p class="card-desc">בדוק את בחירותיך לפני השידור לטופס הרשמי:</p>
+                        <h2 class="card-title">סיכום הפרטים והקודים</h2>
+                        <p class="card-desc">בדקו שכל הפרטים נכונים לפני הרישום להגרלה:</p>
                         
                         <div class="summary-list">
                             <div class="summary-item">
-                                <span class="summary-q">אינסולין ו-GLP1:</span>
+                                <span class="summary-q">שם מלא:</span>
+                                <span class="summary-a summary-highlight" id="summary-val-name">-</span>
+                            </div>
+                            <div class="summary-item">
+                                <span class="summary-q">מקום עבודה:</span>
+                                <span class="summary-a summary-highlight" id="summary-val-workplace">-</span>
+                            </div>
+                            <div class="summary-item">
+                                <span class="summary-q">מספר טלפון:</span>
+                                <span class="summary-a summary-highlight" id="summary-val-phone">-</span>
+                            </div>
+                            <div class="summary-item">
+                                <span class="summary-q">קוד אתגר 1:</span>
                                 <span class="summary-a" id="summary-val-q1">-</span>
                             </div>
                             <div class="summary-item">
-                                <span class="summary-q">משימת הצלת כף הרגל:</span>
+                                <span class="summary-q">קוד אתגר 2:</span>
                                 <span class="summary-a" id="summary-val-q2">-</span>
                             </div>
                             <div class="summary-item">
-                                <span class="summary-q">מגן השריר ו-GLP1:</span>
+                                <span class="summary-q">קוד אתגר 3:</span>
                                 <span class="summary-a" id="summary-val-q3">-</span>
                             </div>
                             <div class="summary-item">
-                                <span class="summary-q">סוכרת בגיל השלישי:</span>
+                                <span class="summary-q">קוד אתגר 4:</span>
                                 <span class="summary-a" id="summary-val-q4">-</span>
                             </div>
                         </div>
 
                         <div class="submit-actions">
-                            <button type="submit" class="btn btn-primary btn-submit" id="btn-submit">
-                                <span>שדר תשובות לכנס 📤</span>
+                            <button type="submit" class="btn btn-submit" id="btn-submit">
+                                <span>שדר תשובות והיכנס להגרלה 🎁</span>
                             </button>
                             <button type="button" class="btn btn-secondary btn-prev">חזור ותקן</button>
                         </div>
@@ -261,11 +310,11 @@
                 <div class="wizard-card" id="card-loading">
                     <div class="card-content loading-content">
                         <div class="glow-spinner"></div>
-                        <h2 class="loading-title" id="loading-status-text">משדר תשובות לשרת...</h2>
+                        <h2 class="loading-title" id="loading-status-text">רושם השתתפות בהגרלה...</h2>
                         <div class="progress-bar-container">
                             <div class="progress-bar-fill" id="submit-progress-bar"></div>
                         </div>
-                        <p class="loading-desc">אנא המתן, אנו רושמים את השתתפותך באתגר.</p>
+                        <p class="loading-desc">אנא המתן, אנו מחברים אותך למערכת ההגרלה.</p>
                     </div>
                 </div>
 
@@ -281,19 +330,19 @@
                                 <div class="icon-fix"></div>
                             </div>
                         </div>
-                        <h2 class="success-title">התשובות שודרו בהצלחה!</h2>
-                        <p class="success-desc">תודה רבה על השתתפותך באתגר האינטראקטיבי של כנס סוכרת והשמנה ירושלים 2026. בחירותיך נרשמו בהצלחה במערכת.</p>
+                        <h2 class="success-title">נרשמת בהצלחה להגרלה! 🏆</h2>
+                        <p class="success-desc">תודה רבה על השתתפותך באתגר הכנס. הפרטים האישיים והקודים שהזנת נקלטו במערכת והינך בפנים!<br>ניפגש בהגרלה הגדולה.</p>
                         
                         <div class="success-badge">
-                            <div class="badge-icon">🏆</div>
+                            <div class="badge-icon">🎁</div>
                             <div class="badge-text">
-                                <h4>האתגר הושלם!</h4>
-                                <p>המשך כנס פורה ומעשיר</p>
+                                <h4>ההרשמה הושלמה!</h4>
+                                <p>בהצלחה בהגרלה הגדולה של הכנס</p>
                             </div>
                         </div>
 
                         <button type="button" class="btn btn-primary" id="btn-reset">
-                            <span>התחל מחדש</span>
+                            <span>הזן משתתף נוסף</span>
                         </button>
                     </div>
                 </div>
