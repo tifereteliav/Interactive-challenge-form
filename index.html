@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="טופס אתגר אינטראקטיבי עבור כנס סוכרת והשמנה, ירושלים 2026. ענו על השאלות וזכו בפרסים!">
+    <title>תוצאות האתגר האינטראקטיבי - כנס סוכרת והשמנה ירושלים</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;600;700;800&family=Outfit:wght@400;600;700&family=Rubik:wght@400;500;700;900&display=swap" rel="stylesheet">
+    
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <!-- Animated background particles and mesh -->
+    <div class="bg-network" id="bg-network"></div>
+    <div class="bg-glow-blob blob-1"></div>
+    <div class="bg-glow-blob blob-2"></div>
+    
+    <!-- Hidden iframe for silent form submission -->
+    <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
+
+    <div class="app-container">
+        <!-- Header Section -->
+        <header class="main-header">
+            <div class="header-logo-section">
+                <!-- Tech / Medical Icons (glowing) -->
+                <div class="tech-icons">
+                    <!-- ECG Heart Rate Icon -->
+                    <div class="icon-bubble" title="ECG">
+                        <svg viewBox="0 0 24 24" width="20" height="20">
+                            <path d="M3 12h3l2-6 3 12 2-9 2 6 3-3h3" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <!-- Molecule Icon -->
+                    <div class="icon-bubble" title="Molecule">
+                        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="5" r="2.5"/>
+                            <circle cx="5" cy="15" r="2.5"/>
+                            <circle cx="19" cy="15" r="2.5"/>
+                            <line x1="12" y1="7.5" x2="6.5" y2="13" />
+                            <line x1="12" y1="7.5" x2="17.5" y2="13" />
+                            <line x1="7.5" y1="15" x2="16.5" y2="15" />
+                        </svg>
+                    </div>
+                    <!-- Connectivity Phone Icon -->
+                    <div class="icon-bubble" title="Connectivity">
+                        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="5" y="2" width="14" height="20" rx="2" ry="2"/>
+                            <line x1="12" y1="18" x2="12" y2="18.01" stroke-linecap="round" stroke-width="3"/>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="header-titles">
+                <span class="gold-badge">מחר זה קורה! 29.6.2026</span>
+                <h1 class="main-title">סוכרת והשמנה: ניהול אינטגרטיבי וחדשנות</h1>
+                <p class="subtitle">האתגר האינטראקטיבי - כנס הקיץ לצוותים רפואיים | מלון מצודת דוד, ירושלים</p>
+            </div>
+            
+            <!-- Jerusalem Skyline Gold SVG Outline -->
+            <div class="jerusalem-skyline">
+                <svg viewBox="0 0 200 40" preserveAspectRatio="none" fill="currentColor">
+                    <!-- Stylized Jerusalem silhouette (domes, towers, ramparts) -->
+                    <path d="M0,40 L0,32 L15,32 L15,35 L30,35 L30,22 L35,22 L35,12 C35,10 39,10 39,12 L39,22 L45,22 L45,35 L60,35 L60,25 C60,20 75,20 75,25 L75,35 L90,35 L90,15 L95,15 L95,5 L97,5 L97,15 L102,15 L102,35 L120,35 L120,18 C120,14 135,14 135,18 L135,35 L150,35 L150,22 L155,22 L155,8 C155,6 160,6 160,8 L160,22 L165,22 L165,35 L180,35 L180,30 L200,30 L200,40 Z"/>
+                </svg>
+            </div>
+        </header>
+
+        <!-- Main Display Panel -->
+        <main class="form-panel">
+            <!-- Central Glowing Circle Indicator -->
+            <div class="centerpiece-section">
+                <div class="centerpiece-circle">
+                    <!-- Progress Ring SVG -->
+                    <svg class="progress-ring-svg" width="160" height="160">
+                        <circle class="progress-ring-track" cx="80" cy="80" r="72" />
+                        <circle class="progress-ring-fill" id="progress-ring" cx="80" cy="80" r="72" />
+                    </svg>
+                    <!-- Tower of David Background Circle -->
+                    <div class="centerpiece-inner">
+                        <img src="/tower_david_sunset.png" alt="ירושלים בשקיעה" class="david-img">
+                        <div class="progress-overlay">
+                            <span class="progress-number" id="progress-percentage">0%</span>
+                            <span class="progress-label" id="progress-text">התקדמות</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Form Container -->
+            <form id="google-form" action="https://docs.google.com/forms/d/e/1FAIpQLSdH1ck8pWmBNGHpc-Nw1WeC3I8cWLCl5Aq9EUkdws8xF8vrTA/formResponse" method="POST" target="hidden_iframe" class="wizard-form">
+                
+                <!-- Welcome Card -->
+                <div class="wizard-card active" id="card-welcome">
+                    <div class="card-content">
+                        <h2 class="card-title">מוכנים לאתגר?</h2>
+                        <p class="card-desc">לפניכם 4 אתגרים קצרים ואינטראקטיביים המבוססים על נושאי הכנס. ענו על כל השאלות, השלימו את האתגר ושדרו את התשובות היישר למערכת הכנס!</p>
+                        <div class="welcome-decor">
+                            <div class="welcome-line"></div>
+                            <div class="welcome-dot"></div>
+                            <div class="welcome-line"></div>
+                        </div>
+                        <button type="button" class="btn btn-primary btn-start" id="btn-start">
+                            <span>להתחלת האתגר</span>
+                            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+                                <line x1="5" y1="12" x2="19" y2="12" />
+                                <polyline points="12 5 19 12 12 19" />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Question 1 Card -->
+                <div class="wizard-card" id="card-q1">
+                    <div class="card-header">
+                        <span class="step-counter">אתגר 1 מתוך 4</span>
+                        <h2 class="question-title">אתגר הראשון: אינסולין ו-GLP1</h2>
+                    </div>
+                    <div class="options-container">
+                        <label class="option-card">
+                            <input type="radio" name="entry.1994126403" value="Insulin" required>
+                            <div class="option-details">
+                                <div class="option-indicator"></div>
+                                <span class="option-text">Insulin</span>
+                            </div>
+                        </label>
+                        <label class="option-card">
+                            <input type="radio" name="entry.1994126403" value="GLP1" required>
+                            <div class="option-details">
+                                <div class="option-indicator"></div>
+                                <span class="option-text">GLP1</span>
+                            </div>
+                        </label>
+                    </div>
+                    <div class="card-footer">
+                        <button type="button" class="btn btn-secondary btn-prev" disabled>חזור</button>
+                    </div>
+                </div>
+
+                <!-- Question 2 Card -->
+                <div class="wizard-card" id="card-q2">
+                    <div class="card-header">
+                        <span class="step-counter">אתגר 2 מתוך 4</span>
+                        <h2 class="question-title">אתגר שני: משימת הצלת כף הרגל Hyperbaric Rescue</h2>
+                    </div>
+                    <div class="options-container">
+                        <label class="option-card">
+                            <input type="radio" name="entry.753390370" value="Diabetic Foot 45" required>
+                            <div class="option-details">
+                                <div class="option-indicator"></div>
+                                <span class="option-text">Diabetic Foot 45</span>
+                            </div>
+                        </label>
+                        <label class="option-card">
+                            <input type="radio" name="entry.753390370" value="Diabetic Foot 67" required>
+                            <div class="option-details">
+                                <div class="option-indicator"></div>
+                                <span class="option-text">Diabetic Foot 67</span>
+                            </div>
+                        </label>
+                    </div>
+                    <div class="card-footer">
+                        <button type="button" class="btn btn-secondary btn-prev">חזור</button>
+                    </div>
+                </div>
+
+                <!-- Question 3 Card -->
+                <div class="wizard-card" id="card-q3">
+                    <div class="card-header">
+                        <span class="step-counter">אתגר 3 מתוך 4</span>
+                        <h2 class="question-title">אתגר שלישי: מגן השריר ו-GLP1</h2>
+                    </div>
+                    <div class="options-container">
+                        <label class="option-card">
+                            <input type="radio" name="entry.288096859" value="Muscle" required>
+                            <div class="option-details">
+                                <div class="option-indicator"></div>
+                                <span class="option-text">Muscle</span>
+                            </div>
+                        </label>
+                        <label class="option-card">
+                            <input type="radio" name="entry.288096859" value="GLP1" required>
+                            <div class="option-details">
+                                <div class="option-indicator"></div>
+                                <span class="option-text">GLP1</span>
+                            </div>
+                        </label>
+                    </div>
+                    <div class="card-footer">
+                        <button type="button" class="btn btn-secondary btn-prev">חזור</button>
+                    </div>
+                </div>
+
+                <!-- Question 4 Card -->
+                <div class="wizard-card" id="card-q4">
+                    <div class="card-header">
+                        <span class="step-counter">אתגר 4 מתוך 4</span>
+                        <h2 class="question-title">אתגר רביעי: אתגרים בטיפול בסוכרת בגיל השלישי</h2>
+                    </div>
+                    <div class="options-container">
+                        <label class="option-card">
+                            <input type="radio" name="entry.1978441009" value="Shingrix" required>
+                            <div class="option-details">
+                                <div class="option-indicator"></div>
+                                <span class="option-text">Shingrix</span>
+                            </div>
+                        </label>
+                        <label class="option-card">
+                            <input type="radio" name="entry.1978441009" value="The Third Age" required>
+                            <div class="option-details">
+                                <div class="option-indicator"></div>
+                                <span class="option-text">The Third Age</span>
+                            </div>
+                        </label>
+                    </div>
+                    <div class="card-footer">
+                        <button type="button" class="btn btn-secondary btn-prev">חזור</button>
+                    </div>
+                </div>
+
+                <!-- Submit Review Card -->
+                <div class="wizard-card" id="card-submit">
+                    <div class="card-content">
+                        <h2 class="card-title">סיכום התשובות שלך</h2>
+                        <p class="card-desc">בדוק את בחירותיך לפני השידור לטופס הרשמי:</p>
+                        
+                        <div class="summary-list">
+                            <div class="summary-item">
+                                <span class="summary-q">אינסולין ו-GLP1:</span>
+                                <span class="summary-a" id="summary-val-q1">-</span>
+                            </div>
+                            <div class="summary-item">
+                                <span class="summary-q">משימת הצלת כף הרגל:</span>
+                                <span class="summary-a" id="summary-val-q2">-</span>
+                            </div>
+                            <div class="summary-item">
+                                <span class="summary-q">מגן השריר ו-GLP1:</span>
+                                <span class="summary-a" id="summary-val-q3">-</span>
+                            </div>
+                            <div class="summary-item">
+                                <span class="summary-q">סוכרת בגיל השלישי:</span>
+                                <span class="summary-a" id="summary-val-q4">-</span>
+                            </div>
+                        </div>
+
+                        <div class="submit-actions">
+                            <button type="submit" class="btn btn-primary btn-submit" id="btn-submit">
+                                <span>שדר תשובות לכנס 📤</span>
+                            </button>
+                            <button type="button" class="btn btn-secondary btn-prev">חזור ותקן</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Loading Card -->
+                <div class="wizard-card" id="card-loading">
+                    <div class="card-content loading-content">
+                        <div class="glow-spinner"></div>
+                        <h2 class="loading-title" id="loading-status-text">משדר תשובות לשרת...</h2>
+                        <div class="progress-bar-container">
+                            <div class="progress-bar-fill" id="submit-progress-bar"></div>
+                        </div>
+                        <p class="loading-desc">אנא המתן, אנו רושמים את השתתפותך באתגר.</p>
+                    </div>
+                </div>
+
+                <!-- Success Celebration Card -->
+                <div class="wizard-card" id="card-success">
+                    <div class="card-content success-content">
+                        <!-- Success Checkmark Animation -->
+                        <div class="success-checkmark">
+                            <div class="check-icon">
+                                <span class="icon-line line-tip"></span>
+                                <span class="icon-line line-long"></span>
+                                <div class="icon-circle"></div>
+                                <div class="icon-fix"></div>
+                            </div>
+                        </div>
+                        <h2 class="success-title">התשובות שודרו בהצלחה!</h2>
+                        <p class="success-desc">תודה רבה על השתתפותך באתגר האינטראקטיבי של כנס סוכרת והשמנה ירושלים 2026. בחירותיך נרשמו בהצלחה במערכת.</p>
+                        
+                        <div class="success-badge">
+                            <div class="badge-icon">🏆</div>
+                            <div class="badge-text">
+                                <h4>האתגר הושלם!</h4>
+                                <p>המשך כנס פורה ומעשיר</p>
+                            </div>
+                        </div>
+
+                        <button type="button" class="btn btn-primary" id="btn-reset">
+                            <span>התחל מחדש</span>
+                        </button>
+                    </div>
+                </div>
+
+            </form>
+        </main>
+        
+        <!-- Footer / Branding -->
+        <footer class="main-footer">
+            <p>האתגר האינטראקטיבי &copy; 2026 | עיצוב ופיתוח מותאם עבור כנס סוכרת והשמנה ירושלים</p>
+        </footer>
+    </div>
+
+    <!-- Canvas for Confetti -->
+    <canvas id="confetti-canvas"></canvas>
+
+    <!-- JavaScript Bundle -->
+    <script type="module" src="/app.js"></script>
+</body>
+</html>

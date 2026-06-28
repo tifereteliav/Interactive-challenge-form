@@ -1,0 +1,15 @@
+{
+  "name": "interactive-challenge-form",
+  "version": "1.0.0",
+  "description": "Interactive form for the Diabetes and Obesity Conference, Jerusalem 2026",
+  "main": "index.html",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "vite": "^5.0.0"
+  }
+}
